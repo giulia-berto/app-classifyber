@@ -8,10 +8,11 @@ export SINGULARITYENV_WORKDIR=$(pwd)
 
 ## modules
 echo "Loading modules"
-module unload python
-module load python/mkl/numpy/1.13
 module load singularity
 module load nodejs
+module unload python
+module load python/2.7.3
+module load python/mkl/numpy/1.13
 echo "Finished loading modules"
 
 export PYTHONPATH=/N/u/brlife/git/nibabel:$PYTHONPATH
