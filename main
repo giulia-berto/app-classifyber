@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -k o
+#PBS -l nodes=1:ppn=16,vmem=16gb,walltime=08:00:00
+
+[ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
+
+export SINGULARITYENV_WORKDIR=$(pwd)
+
+module load singularity
+
+set -e
+set -x
+
+#execute app
+singularity exec -e docker://brainlife/dipy:0.16.0 ./run.sh
+
+ret=$?
+if [ ! $ret -eq 0 ]; then
+	exit $ret
+fi
+
+#removing files
+rm *.nii.gz -f
+rm *.tck
+rm -r tractograms_directory -f
+rm -r examples_directory* -f
+rm kdt -f
+rm prototypes.npy -f
+
+echo "Complete"
