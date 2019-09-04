@@ -48,7 +48,7 @@ if [[ $static == *.tck ]];then
 		id_mov=$(jq -r "._inputs[1+$i+$num_ex].meta.subject" config.json | tr -d "_")
 		cp ${arr_mov[i]//[,\"]} ./${id_mov}_tractogram_moving.tck;
 		python tck2trk.py $t1_moving ${id_mov}_tractogram_moving.tck -f;
-		cp ${id_mov}_tractogram_moving.trk tractograms_directory/$id_mov'_track.trk';
+		mv ${id_mov}_tractogram_moving.trk tractograms_directory/$id_mov'_track.trk';
 	done
 else
 	echo "Tractogram already in .trk format"
