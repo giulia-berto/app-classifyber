@@ -6,13 +6,18 @@
 
 export SINGULARITYENV_WORKDIR=$(pwd)
 
+## modules
+echo "Loading modules"
+module unload python
+module load dipy/dev
 module load singularity
+module load nodejs
 
 set -e
 set -x
 
 #execute app
-singularity exec -e docker://brainlife/dipy:0.16.0 ./run.sh
+./run.sh
 
 ret=$?
 if [ ! $ret -eq 0 ]; then

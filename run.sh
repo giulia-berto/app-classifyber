@@ -110,7 +110,7 @@ fi
 
 echo "Running Classifyber"
 mkdir tracts_trks;
-python classifyber.py \
+singularity exec -e docker://brainlife/dipy:0.16.0 python classifyber.py \
 			-moving_dir tractograms_directory \
 			-static $subjID'_track.trk' \
 			-ex_dir examples_directory \
@@ -125,7 +125,7 @@ else
 fi
 
 echo "Building the wmc structure"
-python build_wmc.py -tractogram $static
+singularity exec -e docker://brainlife/dipy:0.16.0 python build_wmc.py -tractogram $static
 if [ -f 'classification.mat' ]; then 
     echo "WMC structure created."
 else 
