@@ -8,14 +8,17 @@ export SINGULARITYENV_WORKDIR=$(pwd)
 
 ## modules
 echo "Loading modules"
-module load spm/8
 module unload python
 module load dipy/dev
-module load singularity
 module load nodejs
+module load singularity
 echo "Finished loading modules"
 
 export PYTHONPATH=/N/u/brlife/git/nibabel:$PYTHONPATH
+
+echo "setting miniconda path..."
+unset PYTHONPATH
+export PATH=/N/u/gberto/Karst/miniconda2/bin:$PATH 
 
 set -e
 set -x
