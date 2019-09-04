@@ -11,8 +11,7 @@ echo "Loading modules"
 module load singularity
 module load nodejs
 module unload python
-module load python/2.7.3
-module load python/mkl/numpy/1.13
+module load dipy/0.11.0
 echo "Finished loading modules"
 
 export PYTHONPATH=/N/u/brlife/git/nibabel:$PYTHONPATH
