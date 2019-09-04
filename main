@@ -12,6 +12,9 @@ module unload python
 module load dipy/dev
 module load singularity
 module load nodejs
+echo "Finished loading modules"
+
+export PYTHONPATH=/N/u/brlife/git/nibabel:$PYTHONPATH
 
 set -e
 set -x
