@@ -1,7 +1,5 @@
 #!/bin/bash
 
-module load nodejs
-
 echo "copying moving and static tractograms"
 subjID=`jq -r '._inputs[0].meta.subject' config.json`
 static=`jq -r '.tractogram_static' config.json`
