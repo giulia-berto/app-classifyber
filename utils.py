@@ -55,8 +55,8 @@ def streamlines_idx(target_tract, kdt, prototypes, distance_func=bundles_distanc
     dm_target_tract = distance(target_tract, prototypes)
     D, I = kdt.query(dm_target_tract, k=1)
     if (D > warning_threshold).any():
-        print("WARNING (streamlines_idx()): for %s streamlines D > 1.0e-0 !!" % (D > warning_threshold).sum())
-    print(D)
+        print("WARNING (streamlines_idx()): for %s streamlines D > 1.0e-4 !!" % (D > warning_threshold).sum())
+    #print(D)
     target_tract_idx = I.squeeze()
     return target_tract_idx
 
