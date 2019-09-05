@@ -12,6 +12,7 @@ from endpoints_distance import bundles_distances_endpoints_fastest
 from waypoints_distance import wrapper_bundle2roi_distance, bundle2roi_distance
 from subsampling import compute_subset
 import pickle
+import json
 from dipy.tracking import metrics as tm
 from dipy.tracking.metrics import endpoint
 from sklearn.cluster import KMeans
