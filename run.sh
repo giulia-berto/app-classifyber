@@ -73,11 +73,11 @@ if [[ ${arr_seg[1]//[,\"]} == *.trk ]];then
 	echo "Tracts already in .trk format"
 	tract_name=$(jq -r "._inputs[2].tags[0]" config.json | tr -d "_")
 	echo $tract_name > tract_name_list.txt
-	mkdir examples_directory/examples_directory_$tract_name;
+	mkdir examples_directory/$tract_name;
 	for i in `seq 1 $num_ex`; 
 	do
 		id_mov=$(jq -r "._inputs[1+$i+$num_ex].meta.subject" config.json | tr -d "_")
-		cp ${arr_seg[i]//[,\"]} examples_directory/examples_directory_$tract_name/$id_mov'_'$tract_name'_tract.trk';
+		cp ${arr_seg[i]//[,\"]} examples_directory/$tract_name/$id_mov'_'$tract_name'_tract.trk';
 	done
 else
 	echo "Tracts conversion to trk"
@@ -91,12 +91,12 @@ else
 		python wmc2trk.py -tractogram $tractogram_moving -classification $seg_file
 		while read tract_name; do
 			echo "Tract name: $tract_name";
-			if [ ! -d "examples_directory/examples_directory_$tract_name" ]; then
-  				mkdir examples_directory/examples_directory_$tract_name;
+			if [ ! -d "examples_directory/$tract_name" ]; then
+  				mkdir examples_directory/$tract_name;
 			fi
-			mv $tract_name'_tract.trk' examples_directory/examples_directory_$tract_name/$id_mov'_'$tract_name'_tract.trk';
+			mv $tract_name'_tract.trk' examples_directory/$tract_name/$id_mov'_'$tract_name'_tract.trk';
 
-			if [ -z "$(ls -A -- "examples_directory/examples_directory_$tract_name")" ]; then    
+			if [ -z "$(ls -A -- "examples_directory/$tract_name")" ]; then    
 				echo "examples_directory is empty."; 
 				exit 1;
 			else    
