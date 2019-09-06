@@ -147,7 +147,7 @@ def classifyber(moving_tractograms_dir, static_tractogram_fname, ex_dir_tract):
 	#pickle.dump(clf, open(clf_fname, 'w'), protocol=pickle.HIGHEST_PROTOCOL)
 	#scaler_fname = 'scaler_%s' %tract_name
 	#pickle.dump(scaler, open(scaler_fname, 'w'), protocol=pickle.HIGHEST_PROTOCOL)
-	np.save('estimated_tract_idx_%s.npy' %tract_name, estimated_tract_idx)
+	np.save('estimated_idx_%s.npy' %tract_name, union_superset_idx[estimated_tract_idx])
 
 	return estimated_tract	
 
