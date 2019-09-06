@@ -35,7 +35,7 @@ def build_wmc(tck_file, tractID_list):
 
     for t, tractID in enumerate(tractID_list):
     	tract_name = tract_name_list[t]
-    	idx_fname = 'estimated_tract_idx_%s.npy' %tract_name		
+    	idx_fname = 'estimated_idx_%s.npy' %tract_name		
     	idx_tract = np.load(idx_fname)
     	labels[idx_tract] = tractID
 
